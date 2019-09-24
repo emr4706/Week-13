@@ -34,6 +34,6 @@ router.post("/delete-topic", (req, res) => {
 
   res.redirect("/");
 
-})
+});
 
 module.exports = router;

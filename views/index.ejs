@@ -1,51 +1,54 @@
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link href="/stylesheets/style.css" rel="stylesheet" />
-    <title>LiveCoding jQuery Assignment</title>
-  </head>
-  <body>
-  	<div id="wrapper" >
-	    <header>
-	    	<div id="page-banner">
-	    		<h1 class="title">LiveCoding Topics</h1>
-          <p>Topics for coders</p>
-          <form id="search-topics">
-            <input id="searchInput" type="text" placeholder="Search topics..." />
-          </form>
-	    	</div>
-	    </header>
-	    <div id="topic-list">
-        <h2 class="title">Topics to Cover</h2>
+<% include partials/header %>
 
-      <% for(var topic of topics){ %>
-
-        <ul>
-        <form action="/delete-topic" method="POST">
-          <li>
-          <span class="name" ><%= topic.text %></span> 
-          <input style="display: none" type="text" name="id" value="<%=topic.id %>" >
-          <button id="delete" class="list-group-item list-group-item-action" >Delete</button>  
-          </li>
-        </form> 
-        </ul>
-        
-      <% } %>
-      
-	    </div>
-	    <form id="add-topic" action="add-topics" method="POST">
-			<input type="checkbox" id="hide" />
-			<label for="hide"> Hide all topics </label>
-	    	<input id="add-list" type="text" name="newTopic" placeholder="Add a topic..." />
-	    	<button type="submit">Add</button>
-	    </form>
+<div id="wrapper">
+  <header>
+    <div id="page-banner">
+      <h1 class="title">LiveCoding Topics</h1>
+      <p>Topics for coders</p>
+      <form id="search-topics">
+        <input id="searchInput" type="text" placeholder="Search topics..." />
+      </form>
     </div>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="app.js"></script>
-  </body>
-</html>
+  </header>
+  <div id="topic-list">
+    <h2 class="title">Topics to Cover</h2>
 
+    <% for(var topic of topics){ %>
+
+    <ul>
+      <form action="/delete-topic" method="POST">
+        <li>
+          <span class="name"><%= topic.text %></span>
+          <input
+            style="display: none"
+            type="text"
+            name="id"
+            value="<%= topic.id %>"
+          />
+          <button id="delete" class="list-group-item list-group-item-action">
+            Delete
+          </button>
+        </li>
+      </form>
+    </ul>
+
+    <% } %>
+
+  </div>
+  <form id="add-topic" action="add-topics" method="POST">
+    <input type="checkbox" id="hide" />
+    <label for="hide"> Hide all topics </label>
+    <input
+      id="add-list"
+      type="text"
+      name="newTopic"
+      placeholder="Add a topic..."
+    />
+    <button type="submit">Add</button>
+  </form>
+</div>
+
+
+<% include partials/footer %>
